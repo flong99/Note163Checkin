@@ -3,18 +3,22 @@ name: Run
 on:
   workflow_dispatch:
   repository_dispatch:
+  # 添加定时任务配置
+  schedule:
+    - cron: '0 23 * * *'  # UTC 时间 23:00（对应北京时间次日 7:00）
 
 jobs:
   build:
-
     if: github.actor == github.repository_owner
     runs-on: ubuntu-latest
-
+    # 可选：设置时区（仅影响步骤中的时间，不影响 cron 触发时间）
+    env:
+      TZ: Asia/Shanghai  # 将步骤中的时间显示为北京时间
     steps:
-    - uses: actions/checkout@main
-    - name: Run
-      uses: coactions/setup-xvfb@main
-      with:
+      - uses: actions/checkout@v4  # 建议使用稳定版本
+      - name: Setup Xvfb
+        uses: coactions/setup-xvfb@main
+      - name: Run Application
         run: dotnet run
-      env: 
-        CONF: ${{ secrets.CONF }}
+        env:
+          CONF: ${{ secrets.CONF }}
