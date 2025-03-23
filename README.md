@@ -39,6 +39,7 @@
 ![run-workflow](https://img.guoqianfan.com/note/2020/08/run-workflow.png)
 
 **注意**：本项目**不会**自动运行，需要自行在`.github/workflows/main.yml`添加定时任务。
+flong99注释：main.yml已经增加了定时任务。
 
 ## 四、查看运行结果
 
