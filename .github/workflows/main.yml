@@ -15,10 +15,10 @@ jobs:
     env:
       TZ: Asia/Shanghai  # 将步骤中的时间显示为北京时间
     steps:
-      - uses: actions/checkout@v4  # 建议使用稳定版本
-      - name: Setup Xvfb
+      - uses: actions/checkout@main
+      - name: Run
         uses: coactions/setup-xvfb@main
-      - name: Run Application
-        run: dotnet run
-        env:
+        with:
+          run: dotnet run
+        env: 
           CONF: ${{ secrets.CONF }}
