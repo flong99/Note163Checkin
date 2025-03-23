@@ -5,7 +5,8 @@ on:
   repository_dispatch:
   # 添加定时任务配置
   schedule:
-    - cron: '0 23 * * *'  # UTC 时间 23:00（对应北京时间次日 7:00）
+    - cron: '0 21 * * *'  # UTC 时间 21:00（对应北京时间次日 5:00）
+    - cron: '0 09 * * *'  # UTC 时间 09:00
 
 jobs:
   build:
